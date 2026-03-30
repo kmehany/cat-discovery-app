@@ -56,11 +56,11 @@ export default function DiscoverPage() {
 
 return (
   <div className="page">
-    <h1 className="title">Welcome to Kerolos' Discover Page</h1>
+    <h1 className="title">Welcome to Kerolos' Discover Page!</h1>
 
     <div className="button">
       <button className="discover button" onClick={getRandomCat}>
-        Discover Cat
+        Discover A Cat
       </button>
     </div>
 
