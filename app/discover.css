@@ -1,0 +1,61 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #111;
+  color: white;
+}
+
+.page {
+  padding: 20px;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.discover button {
+    padding: 10px 20px;
+    front-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.discover-btn:hover {
+  background-color: #ddd;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.cat-img {
+    width: 400px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    cursor: pointer;
+    margin: 8px 0;
+}
+
+.card p:hover {
+    color: #4da6ff;
+}
