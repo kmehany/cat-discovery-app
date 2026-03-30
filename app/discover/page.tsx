@@ -84,7 +84,7 @@ return (
             </p>
           </>
         ) : (
-          <p>discover a cat</p>
+          <p>Start</p>
         )}
       </div>
 
