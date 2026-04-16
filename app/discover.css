@@ -1,61 +1,135 @@
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #111;
-  color: white;
-}
-
-.page {
-  padding: 20px;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 22px;
-}
-
-.button{
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.discover button {
+.button2 {  
     padding: 10px 20px;
-    front-size: 18px;
     border-radius: 8px;
     border: none;
     cursor: pointer;
+
+}
+
+body {
+  margin: 0;
+  background-color: #0b0b0b;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #cfcfcf;
+  margin-bottom: 25px;
+}
+
+.discover-btn {
+  background-color: #f4b942;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 30px;
 }
 
 .discover-btn:hover {
-  background-color: #ddd;
+  background-color: #ffd166;
 }
 
 .main {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  flex-wrap: wrap;
 }
 
 .card {
-    background-color: #222;
-    padding: 21px;
-    border-radius: 10px;
-    width: 400px;
+  background-color: #1f1f1f;
+  border-radius: 16px;
+  padding: 20px;
+  width: 380px;
+  min-height: 450px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  text-align: left;
+}
+
+.card-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .cat-img {
-    width: 400px;
-    border-radius: 10px;
-    margin-bottom: 10px;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 18px;
 }
 
-.card p {
-    cursor: pointer;
-    margin: 8px 0;
+.attribute-btn {
+  display: block;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #2d2d2d;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
-.card p:hover {
-    color: #4da6ff;
+.attribute-btn:hover {
+  background-color: #3a3a3a;
+}
+
+.ban-list-box {
+  width: 100%;
+}
+
+.ban-help {
+  text-align: center;
+  color: #cfcfcf;
+  margin-bottom: 15px;
+}
+
+.ban-item {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #3a1f1f;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+}
+
+.ban-item:hover {
+  background-color: #552828;
+}
+
+.empty-text {
+  color: #cfcfcf;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.temperament-label {
+  margin-bottom: 10px;
+  font-weight: bold;
 }

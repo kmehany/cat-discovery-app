@@ -1,8 +1,7 @@
 "use client";
-import "../discover.css"
+import "../discover.css";
 import BanList from "./components/BanList";
 import { useState } from "react";
-
 
 export default function DiscoverPage() {
   const [catData, setCatData] = useState<any>(null);
@@ -10,37 +9,40 @@ export default function DiscoverPage() {
 
   async function getRandomCat() {
     const response = await fetch(
-    "https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1",
-    {
-      headers: {
-        "x-api-key": "live_abVz98BqohELAw5P4zOs9WkVCYcH2xjp0qpsQzQtwGh0qiKVsUIQwbqVR1ynbKAT",
-      },
-    }
-  );
-    const data = await response.json();
+      "https://api.thecatapi.com/v1/images/search?limit=1&has_breeds=1",
+      {
+        headers: {
+          "x-api-key":
+            "live_abVz98BqohELAw5P4zOs9WkVCYcH2xjp0qpsQzQtwGh0qiKVsUIQwbqVR1ynbKAT",
+        },
+      }
+    );
 
+    const data = await response.json();
     const randomCat = data[0];
 
     if (!randomCat?.breeds?.length) {
-        return getRandomCat();
+      return getRandomCat();
     }
-
 
     const breedName = randomCat.breeds[0].name;
     const origin = randomCat.breeds[0].origin;
-    const temperament = randomCat.breeds[0].temperament;
+    const temperamentList = randomCat.breeds[0].temperament.split(", ");
 
-    const isBanned =
-        bannedAttributes.includes(breedName) ||
-        bannedAttributes.includes(origin) ||
-        bannedAttributes.includes(temperament);
+    const breedIsBanned = bannedAttributes.includes(breedName);
+    const originIsBanned = bannedAttributes.includes(origin);
+    const temperamentIsBanned = temperamentList.some((item: string) =>
+    bannedAttributes.includes(item)
+  );
+
+  const isBanned = breedIsBanned || originIsBanned || temperamentIsBanned;
 
     if (isBanned) {
-        return getRandomCat();
+      return getRandomCat();
     }
 
     setCatData(randomCat);
-}
+  }
 
   function banAttribute(attribute: string) {
     if (!bannedAttributes.includes(attribute)) {
@@ -53,49 +55,64 @@ export default function DiscoverPage() {
     setBannedAttributes(newList);
   }
 
+  return (
+    <div className="page">
+      <h1 className="title">Welcome to Kerolos&apos; Discover Page!</h1>
+      <p className="subtitle">Click the button to discover a cat, then click an attribute to ban it.</p>
 
-return (
-  <div className="page">
-    <h1 className="title">Welcome to Kerolos' Discover Page!</h1>
-
-    <div className="button">
-      <button className="discover button" onClick={getRandomCat}>
-        Discover A Cat
+      <button className="discover-btn" onClick={getRandomCat}>
+        Discover a Cat
       </button>
-    </div>
 
-    <div className="main">
-      
-      <div className="card">
-        {catData ? (
-          <>
-            <img className="cat-img" src={catData.url} alt="cat" />
+      <div className="main">
+        <div className="card">
+          <h2 className="card-title"></h2>
 
-            <p onClick={() => banAttribute(catData.breeds[0].name)}>
-              Name: {catData.breeds[0].name}
-            </p>
+          {catData ? (
+            <>
+              <img className="cat-img" src={catData.url} alt="cat" />
 
-            <p onClick={() => banAttribute(catData.breeds[0].origin)}>
-              Origin: {catData.breeds[0].origin}
-            </p>
+              <button
+                className="attribute-btn"
+                onClick={() => banAttribute(catData.breeds[0].name)}
+              >
+                Name: {catData.breeds[0].name}
+              </button>
 
-            <p onClick={() => banAttribute(catData.breeds[0].temperament)}>
-              Temperament: {catData.breeds[0].temperament}
-            </p>
-          </>
-        ) : (
-          <p>Start</p>
-        )}
+              <button
+                className="attribute-btn"
+                onClick={() => banAttribute(catData.breeds[0].origin)}
+              >
+                Origin: {catData.breeds[0].origin}
+              </button>
+
+              <div>
+              <p className="temperament-label">Temperaments:</p>
+
+              {catData.breeds[0].temperament.split(", ").map((item: string) => (
+                <button
+                  key={item}
+                  className="attribute-btn"
+                  onClick={() => banAttribute(item)}>
+                  {item}
+                </button>
+              ))}
+            </div>
+            </>
+          ) : (
+
+            <button className="button2" onClick={getRandomCat}>Click to Discover a Cat </button>
+
+          )}
+        </div>
+
+        <div className="card">
+          <BanList
+            bannedAttributes={bannedAttributes}
+            unbanAttribute={unbanAttribute}
+          />
+        </div>
       </div>
-
-      <div className="card">
-        <BanList
-          bannedAttributes={bannedAttributes}
-          unbanAttribute={unbanAttribute}
-        />
-      </div>
-
     </div>
-  </div>
-);
+  );
 }
