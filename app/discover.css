@@ -14,19 +14,26 @@ body {
   font-family: Arial, sans-serif;
 }
 
+
 .page {
   min-height: 100vh;
   text-align: center;
   padding: 30px 20px;
+
+  background-image: url("/cat.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .title {
+  color: #090909;
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
 .subtitle {
-  color: #cfcfcf;
+  color: #090909;
   margin-bottom: 25px;
 }
 
@@ -132,4 +139,27 @@ body {
 .temperament-label {
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+.home-btn {
+  display: inline-block;
+  background-color: #f4b942;
+  color: black;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.home-btn:hover {
+  background-color: #ffd166;
+}
+
+.secondary-btn {
+  background-color: #f9f3f3;
+}
+
+.secondary-btn:hover {
+  background-color: #f1ebeb;
 }
